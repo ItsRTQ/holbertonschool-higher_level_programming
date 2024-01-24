@@ -4,5 +4,9 @@ def print_last_digit(number):
         number = abs(number) % 10
         print("{}".format(number), end="")
         return number
+    elif isinstance(number, str) and number.isdigit():
+        lastdigit = int(number) % 10
+        print("{}".format(lastdigit), end="")
+        return lastdigit
     else:
         return None
