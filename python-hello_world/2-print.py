@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-print(F'"Programming is like building a multilingual puzzle\n', end='')
+print(F'"Programming is like building a multilingual puzzle')
