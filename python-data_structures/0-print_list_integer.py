@@ -8,5 +8,4 @@ def print_list_integer(my_list=[]):
 
     """
     if my_list:
-        for number in my_list:
-            print("{}".format(number))
+        print(*my_list, sep="\n")
