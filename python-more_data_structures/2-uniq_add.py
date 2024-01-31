@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 def uniq_add(my_list=[]):
+    result = 0
     if my_list:
         skip = []
-        result = 0
         for value in my_list:
             if value in skip:
                 pass
@@ -11,4 +11,4 @@ def uniq_add(my_list=[]):
                 skip.append(value)
         return result
     else:
-        return my_list
+        return result
