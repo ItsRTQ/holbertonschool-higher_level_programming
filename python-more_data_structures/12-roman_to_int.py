@@ -3,6 +3,15 @@ def roman_to_int(roman_string):
     if roman_string:
         result = 0
         skip = False
+        invalids = [
+            "IIII",
+            "VV",
+            "XXXX",
+            "LL",
+            "CCCC",
+            "DD",
+            "MMMM"
+        ]
         intervals = {
             "I": 1,
             "V": 5,
@@ -12,6 +21,9 @@ def roman_to_int(roman_string):
             "D": 500,
             "M": 1000
             }
+        for invalid in invalids:
+            if invalid in roman_string:
+                return 0
         for index, letter in enumerate(roman_string, start=1):
             if letter in intervals.keys():
                 if skip:
