@@ -5,7 +5,9 @@ def roman_to_int(roman_string):
         skip = False
         invalids = [
             "IIII",
+            "IIV",
             "VV",
+            "IXX",
             "XXXX",
             "LL",
             "CCCC",
