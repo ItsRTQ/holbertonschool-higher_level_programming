@@ -1,52 +1,26 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
+    intervals = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+        }
     if roman_string:
         result = 0
-        skip = False
-        invalids = [
-            "IIII",
-            "IIV",
-            "VV",
-            "IXX",
-            "XXXX",
-            "LL",
-            "CCCC",
-            "DD",
-            "MMMM"
-        ]
-        intervals = {
-            "I": 1,
-            "V": 5,
-            "X": 10,
-            "L": 50,
-            "C": 100,
-            "D": 500,
-            "M": 1000
-            }
-        for invalid in invalids:
-            if invalid in roman_string:
+        second = 0
+        for letter in reversed(roman_string):
+            first = intervals.get(letter, 0)
+            if first == 0:
                 return 0
-        for index, letter in enumerate(roman_string, start=1):
-            if letter in intervals.keys():
-                if skip:
-                    skip = False
-                    continue
-                first = intervals[letter]
-                if index < len(roman_string):
-                    second = intervals[roman_string[index]]
-                else:
-                    second = None
-                if second:
-                    if first >= second:
-                        result += (lambda a, b: a + b)(first, second)
-                        skip = True
-                    elif first < second:
-                        result += (lambda a, b: a - b)(second, first)
-                        skip = True
-                else:
-                    result += first
+            if first < second:
+                result -= first
             else:
-                return 0
+                result += first
+            second = first
         return result
     else:
         return 0
