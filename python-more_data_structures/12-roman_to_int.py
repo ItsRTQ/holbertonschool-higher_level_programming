@@ -9,7 +9,7 @@ def roman_to_int(roman_string):
         "D": 500,
         "M": 1000
         }
-    if roman_string:
+    if roman_string and isinstance(roman_string, str):
         result = 0
         second = 0
         for letter in reversed(roman_string):
