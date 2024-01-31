@@ -11,4 +11,4 @@ def uniq_add(my_list=[]):
                 skip.append(value)
         return result
     else:
-        return None
+        return my_list
