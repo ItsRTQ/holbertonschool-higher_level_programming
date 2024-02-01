@@ -67,7 +67,7 @@ class Square:
 
         if self.__size > 0:
             for newlines in range(self.position[1]):
-                print()
+                print("")
             for count, i in enumerate(range(self.__size)):
                 for spaces in range(self.position[0]):
                     print(" ", end="")
