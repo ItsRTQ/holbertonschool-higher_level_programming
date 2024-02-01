@@ -66,8 +66,8 @@ class Square:
         """my_print, prints the cube based on its size and position"""
 
         if self.__size > 0:
-            for newlines in range(self.position[1]):
-                print("")
+            # for newlines in range(self.position[1]):
+            #    print("")
             for count, i in enumerate(range(self.__size)):
                 for spaces in range(self.position[0]):
                     print(" ", end="")
