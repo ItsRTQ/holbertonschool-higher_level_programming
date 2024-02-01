@@ -9,11 +9,11 @@ class Square:
             None
         
         Methods:
-            square():
+            square(self):
                 Returns:
                     None
     """
-    def square():
+    def square(self):
         """square is going to be empty for the moment
             Returns:
                 None
