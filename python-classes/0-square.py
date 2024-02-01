@@ -8,5 +8,7 @@ class Square:
     """
     def square():
         """square is going to be empty for the moment
+            Returns:
+                None
         """
         pass
