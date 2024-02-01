@@ -1,20 +1,21 @@
 #!/usr/bin/python3
-"""This module defines a object name Square
+"""This module defines an object named Square.
     Class:
         Square
 """
 class Square:
-    """Square is going to be empty for the moment
+    """A class representing a geometric square.
         Attributes:
             None
         
         Methods:
             square(self):
+                Perform a square-related operation.
                 Returns:
                     None
     """
     def square(self):
-        """square is going to be empty for the moment
+        """Perform a square-related operation.
             Returns:
                 None
         """
