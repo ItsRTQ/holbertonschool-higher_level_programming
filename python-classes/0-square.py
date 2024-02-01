@@ -14,9 +14,3 @@ class Square:
                 Returns:
                     None
     """
-    def square(self):
-        """Perform a square-related operation.
-            Returns:
-                None
-        """
-        pass
