@@ -4,8 +4,4 @@
         Square
 """
 class Square:
-    """A class representing a geometric square.
-        Attributes:
-            None
-    """
-    pass
+    """A class representing a geometric square"""
