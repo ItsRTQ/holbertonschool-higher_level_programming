@@ -22,7 +22,9 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = size
-        if not isinstance(position, tuple) or len(position) != 2:
+        if not isinstance(position, tuple):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif len(position) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         elif any(xy < 0 for xy in position):
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -66,8 +68,8 @@ class Square:
         """my_print, prints the cube based on its size and position"""
 
         if self.__size > 0:
-            # for newlines in range(self.position[1]):
-            #    print("")
+            for newlines in range(self.position[1]):
+                print("")
             for count, i in enumerate(range(self.__size)):
                 for spaces in range(self.position[0]):
                     print(" ", end="")
@@ -90,7 +92,9 @@ class Square:
 
     @position.setter
     def position(self, value):
-        if not isinstance(value, tuple) or len(value) != 2:
+        if not isinstance(value, tuple):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         elif any(xy < 0 for xy in value):
             raise TypeError("position must be a tuple of 2 positive integers")
