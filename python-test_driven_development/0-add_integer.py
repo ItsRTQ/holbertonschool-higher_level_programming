@@ -8,7 +8,11 @@ def add_integer(a, b=98):
         a - First value
         b - second value
 
-    Returns: The addition of a + b
+    Returns:
+        The addition of a + b
+
+    Raises:
+        TypeError: When a or b arent int or float
     """
 
     result = 0
