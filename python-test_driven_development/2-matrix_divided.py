@@ -40,8 +40,8 @@ def matrix_divided(matrix, div):
     if not all(len(x) == len(matrix[0]) for x in matrix):
         raise TypeError("Each row of the matrix must have the same size")
 
-    if not type(div) in (int, float):
-        raise TypeError('div must be a number')
+    if not isinstance(div, (int, float)):
+        raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
