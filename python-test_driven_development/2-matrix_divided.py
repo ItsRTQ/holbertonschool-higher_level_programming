@@ -24,20 +24,26 @@ def matrix_divided(matrix, div):
     div_list = []
     if not matrix:
         raise error
+
     if not isinstance(matrix, list):
         raise TypeError("must be a matrix (list of lists) of integers/floats")
+
     for x in matrix:
         if not isinstance(x, list) or not x:
             raise error
         if not all(isinstance(ele, (int, float)) for ele in x):
             raise error
+
     if not all(len(x) == len(matrix[0]) for x in matrix):
         raise TypeError("Each row of the matrix must have the same size")
-    if not isinstance(div, (int, float)):
-        raise TypeError("div must be a number")
-    if not type(div) in (int, float) or div == 0:
+
+    if not type(div) in (int, float):
+        raise TypeError('div must be a number')
+    if div == 0:
         raise ZeroDivisionError("division by zero")
+
     for x in matrix:
         results = [round(ele / div, 2) for ele in x]
         div_list.append(results)
+
     return div_list
