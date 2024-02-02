@@ -1,0 +1,32 @@
+#add_integer.txt
+
+# Import the module containing the add_integer function
+>>> add_integer = __import__('0-add_integer').add_integer
+
+# Test case 1: Basic Addition
+>>> add_integer(1, 2)
+3
+
+# Test case 2: Basic Addition with negative value
+>>> add_integer(100, -2)
+98
+
+# Test case 3: Use of function with 1 arg given
+>>> add_integer(2)
+100
+
+# Test case 4: Basic Addition with a float value
+>>> add_integer(100.3, -2)
+98
+
+# Test case 5: Use of function with string value
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+# Test case 6: Use of function with none value
+>>> add_integer(None)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
