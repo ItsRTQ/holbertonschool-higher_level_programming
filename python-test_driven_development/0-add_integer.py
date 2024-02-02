@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""This Module contains the definition of add_integer()"""
+"""
+This Module contains the definition of add_integer()
+    Definitions:
+        add_integer(a, b)
+"""
 
 
 def add_integer(a, b=98):
