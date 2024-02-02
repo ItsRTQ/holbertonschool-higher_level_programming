@@ -66,3 +66,15 @@ ValueError: could not convert string to float: 'Goes Boom'
 # Test case 13: Use large float values
 >>> add_integer(2.5e20, 1.5e20)
 400000000000000000000
+
+# Test case 14: both value Overflow test
+>>> add_integer(float('inf'), float('inf'))
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+
+# Test case 15: function trying to type cast NaN
+>>> add_integer(float('nan'))
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
