@@ -113,3 +113,34 @@ TypeError: must be a matrix (list of lists) of integers/floats
 >>> matrix = [[-1, -2, -3], [-4, -5, -6], [-7, -8, -9]]
 >>> matrix_divided(matrix, 3)
 [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0], [-2.33, -2.67, -3.0]]
+
+# Test case 19: div is a float
+>>> matrix = [[1, 2, 3],[4, 5, 6]]
+>>> matrix_divided(matrix, 3.14)
+[[0.32, 0.64, 0.96], [1.27, 1.59, 1.91]]
+
+# Test case 20: matrix is a tuple
+>>> matrix = ([1, 2, 3],[4, 5, 6])
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: must be a matrix (list of lists) of integers/floats
+
+# Test case 21: div is a list
+>>> matrix = [[1, 2, 3],[4, 5, 6]]
+>>> matrix_divided(matrix, [3])
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+# Test case 22: div is a tuple
+>>> matrix = [[1, 2, 3],[4, 5, 6]]
+>>> matrix_divided(matrix, (3,))
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+
+# Test case 23: list with negative, float, int, 0
+>>> matrix = [[-1, -2.2, 3, 0.5],[0.0, -0, -0.0, -0.5]]
+>>> matrix_divided(matrix, 3)
+[[-0.33, -0.73, 1.0, 0.17], [0.0, 0.0, -0.0, -0.17]]
