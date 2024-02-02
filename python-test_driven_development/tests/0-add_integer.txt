@@ -59,10 +59,10 @@ Traceback (most recent call last):
     ...
 ValueError: could not convert string to float: 'Goes Boom'
 
-# Test case 17: Use the maximum integer value for both a and b
+# Test case 12: Use the maximum integer value for both a and b
 >>> add_integer(2**31 - 1, 2**31 - 1)
 4294967294
 
-# Test case 16: Use large float values
+# Test case 13: Use large float values
 >>> add_integer(2.5e20, 1.5e20)
 400000000000000000000
