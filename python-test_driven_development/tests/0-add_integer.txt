@@ -47,7 +47,7 @@ Traceback (most recent call last):
     ...
 ValueError: invalid literal for int() with base 10: 'Five5'
 
-# Test case 10: Usage of large float value
+# Test case 10: OverflowError test
 >>> add_integer(float('inf'))
 Traceback (most recent call last):
     ...
@@ -58,3 +58,11 @@ OverflowError: cannot convert float infinity to integer
 Traceback (most recent call last):
     ...
 ValueError: could not convert string to float: 'Goes Boom'
+
+# Test case 17: Use the maximum integer value for both a and b
+>>> add_integer(2**31 - 1, 2**31 - 1)
+4294967294
+
+# Test case 16: Use large float values
+>>> add_integer(2.5e20, 1.5e20)
+400000000000000000000
