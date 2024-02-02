@@ -52,3 +52,9 @@ ValueError: invalid literal for int() with base 10: 'Five5'
 Traceback (most recent call last):
     ...
 OverflowError: cannot convert float infinity to integer
+
+# Test case 11: Type casting string as float
+>>> add_integer(float('Goes Boom'))
+Traceback (most recent call last):
+    ...
+ValueError: could not convert string to float: 'Goes Boom'
