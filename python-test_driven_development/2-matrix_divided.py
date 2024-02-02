@@ -24,7 +24,6 @@ def matrix_divided(matrix, div):
     """
 
     error = TypeError("must be a matrix (list of lists) of integers/floats")
-    div_list = []
     if not matrix:
         raise error
 
@@ -45,8 +44,6 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    for x in matrix:
-        results = [round(ele / div, 2) for ele in x]
-        div_list.append(results)
+    lt = list(map(lambda x: list(map(lambda y: round(y / div, 2), x)), matrix))
 
-    return div_list
+    return lt
