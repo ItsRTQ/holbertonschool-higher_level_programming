@@ -17,6 +17,9 @@ def matrix_divided(matrix, div):
 
         Raises:
             TypeError: When matrix is not a matrix of ints/floats
+                       When Matrix have diferent size
+                       When Div is not a int/float
+                       When the list is empty or None is recive
             ZeroDivisionError: When div is = 0
     """
 
