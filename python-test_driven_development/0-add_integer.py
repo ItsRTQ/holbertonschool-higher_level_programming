@@ -8,6 +8,7 @@ This Module contains the definition of add_integer()
 
 def add_integer(a, b=98):
     """add_integer adds a + b
+
     Args:
         a - First value
         b - second value
@@ -17,6 +18,7 @@ def add_integer(a, b=98):
 
     Raises:
         TypeError: When a or b arent int/float
+
     """
 
     if not isinstance(a, (int, float)):

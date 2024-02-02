@@ -40,3 +40,15 @@ TypeError: a must be an integer
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
+
+# Test case 9: Type casting string as int
+>>> add_integer(int("Five5"))
+Traceback (most recent call last):
+    ...
+ValueError: invalid literal for int() with base 10: 'Five5'
+
+# Test case 10: Usage of large float value
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
