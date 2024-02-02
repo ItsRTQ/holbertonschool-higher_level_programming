@@ -1,0 +1,75 @@
+#matrix_divided.txt
+
+# importing function for testing
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+# Test case 1: Usual division, Standar usage of function
+>>> matrix = [[1, 2, 3],[4, 5, 6]]
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+# Test case 2: uneven lists
+>>> matrix = [[1, 2, 3],[4, 5]]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
+
+# Test case 3: div been 0
+>>> matrix = [[1, 2, 3],[4, 5, 6]]
+>>> matrix_divided(matrix, 0)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+# Test case 4: list of strings
+>>> matrix = [[1, 2, 3],["hello", "world", "!"]]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: must be a matrix (list of lists) of integers/floats
+
+# Test case 5: 0 inside the matrix
+>>> matrix = [[1, 0, 0],[0.0, 5, 6]]
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.0, 0.0], [0.0, 1.67, 2.0]]
+
+# Test case 6: none value given
+>>> matrix_divided(None, 3)
+Traceback (most recent call last):
+    ...
+TypeError: must be a matrix (list of lists) of integers/floats
+
+# Test case 7: Not a list of lists given
+>>> matrix = [1, 2, 3, 4, 5]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: must be a matrix (list of lists) of integers/floats
+
+# Test case 8: Trying to Overflow
+>>> matrix = [[float('inf'), float('inf'), 3],[4, 5, float('inf')]]
+>>> matrix_divided(matrix, 3)
+[[inf, inf, 1.0], [1.33, 1.67, inf]]
+
+# Test case 9: Trying to Overflow 2
+>>> matrix = [[float('inf'), float('inf'), 3],[4, 5, float('inf')]]
+>>> matrix_divided(matrix, float('inf'))
+[[nan, nan, 0.0], [0.0, 0.0, nan]]
+
+# Test case 10: diving a list with nan value
+>>> matrix = [[float('nan'), 2, 3],[4, 5, float('nan')]]
+>>> matrix_divided(matrix, 3)
+[[nan, 0.67, 1.0], [1.33, 1.67, nan]]
+
+# Test case 11: when div is nan
+>>> matrix = [[1, 2, 3],[4, 5, 6]]
+>>> matrix_divided(matrix, float('nan'))
+[[nan, nan, nan], [nan, nan, nan]]
+
+# Test case 12: When has a longer list inside
+>>> matrix = [[1, 2, 3],[4, 5, 6, 7]]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
