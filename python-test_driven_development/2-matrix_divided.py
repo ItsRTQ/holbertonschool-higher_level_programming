@@ -37,9 +37,8 @@ def matrix_divided(matrix, div):
             raise error
         if not all(isinstance(element, (int, float)) for element in rows):
             raise error
-
-    if not all(len(rows) == len(matrix[0]) for rows in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
+        if not len(rows) == len(matrix[0]):
+            raise TypeError("Each row of the matrix must have the same size")
 
     for rows in matrix:
         result = [round(element / div, 2) for element in rows]
