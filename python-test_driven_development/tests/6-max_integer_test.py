@@ -10,9 +10,19 @@ class TestMaxIntegerFunction(unittest.TestCase):
         result = max_integer([])
         self.assertIsNone(result, "Should return None for an empty list")
 
+    def test_overflow(self):
+        large_integers = [10**18, 2*(10**18), 5*(10**17)]
+        result = max_integer(large_integers)
+        self.assertEqual(result, 2*(10**18), "Incorrect result for overflow test")
+
+    def test_float_inf(self):
+        inf_list = [1, 2, float('inf'), 4, 5]
+        result = max_integer(inf_list)
+        self.assertEqual(result, float('inf'), "Incorrect result for float('inf') test")
+
     def test_max_integer(self):
         test_cases = [
-            ([1, 2, 3, 4, 5], 5),
+            ([1, 2, 3, 4], 4),
             ([-1, -2, -3, -4, -5], -1),
             ([10, 5, 7, 2, 8], 10),
             ([0, 0, 0, 0, 0], 0),
