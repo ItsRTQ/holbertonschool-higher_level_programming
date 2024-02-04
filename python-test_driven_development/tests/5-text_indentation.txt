@@ -98,3 +98,31 @@ TypeError: text must be a string
 # Test case 12: text with only whitelines
 >>> text_indentation("                                                       ")
 <BLANKLINE>
+
+# Test case 13: text with spaces after .?:
+>>> text_indentation("Spaces after special characters. : And here.")
+Spaces after special characters.
+<BLANKLINE>
+:
+<BLANKLINE>
+And here.
+<BLANKLINE>
+<BLANKLINE>
+
+# Test case 14: text with only special characters
+>>> text_indentation("?:.?:.?")
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+<BLANKLINE>
