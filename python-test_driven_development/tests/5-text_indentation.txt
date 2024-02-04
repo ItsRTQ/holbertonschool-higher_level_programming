@@ -84,3 +84,17 @@ above      readme     :
 readme?
 <BLANKLINE>
 Under    Read me
+
+# Test case 10: empty text given
+>>> text_indentation("")
+<BLANKLINE>
+
+# Test case 11: float number given
+>>> text_indentation(3.14)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+# Test case 12: text with only whitelines
+>>> text_indentation("                                                       ")
+<BLANKLINE>
