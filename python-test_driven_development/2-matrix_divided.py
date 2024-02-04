@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module defines matrix_divided
+Module contains the definition of matrix_divided()
         Definitions:
             matrix_divided(matrix, div)
 """

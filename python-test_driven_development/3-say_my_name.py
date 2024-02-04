@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-Module defines function say_my_name
+Module constains the definition of say_my_name()
     Definitions:
-        say_my_name
+        say_my_name(first_name, last_name="")
 """
 
 
 def say_my_name(first_name, last_name=""):
-    """function prints My name is <first name> <last name>
+    """say_my_name prints My name is <first name> <last name>
         Args:
             first_name - name to print
             last_name - last name of name to print

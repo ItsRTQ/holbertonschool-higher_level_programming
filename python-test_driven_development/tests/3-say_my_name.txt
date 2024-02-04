@@ -1,6 +1,6 @@
 #say_my_name.txt
 
-# Import function for testing
+# Import module for function say_my_name, usage on Test cases
 >>> say_my_name = __import__('3-say_my_name').say_my_name
 
 # Test case 1: basic usage of function

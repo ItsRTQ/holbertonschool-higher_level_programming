@@ -1,6 +1,6 @@
-The ``2-matrix_divided`` module
+#matrix_divided.txt
 
-# importing function for testing
+# importing function from module for usage on Test cases
 >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
 # Test case 1:  Basic Usual division, Standar usage of function
