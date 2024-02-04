@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-print_square = __import__('4-print_square').print_square
+text_indentation = __import__('5-text_indentation').text_indentation
 
-print_square(float('nan'))
-
-print("")
+text_indentation("      above      readme     : readme? Under    Read me         ")
