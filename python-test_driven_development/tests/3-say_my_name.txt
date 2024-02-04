@@ -1,0 +1,56 @@
+#say_my_name.txt
+
+# Import function for testing
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Test case 1: basic usage of function
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+# Test case 2: basic usage with different name
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+# Test case 3: usage without last name
+>>> say_my_name("Bob")
+My name is Bob 
+
+# Test case 4: Usage with name not been a str
+>>> say_my_name(12, "Herrera")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+# Test case 5: name been None
+>>> say_my_name(None, "Mendez")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+# Test case 6: last_name been none
+>>> say_my_name("William", None)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+# Test case 7: last name is not a string
+>>> say_my_name("William", 12)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+# Test case 8: first_name list of strings
+>>> say_my_name(["Hello", "World"], "<- what happen there")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+# Test case 9: last_name is a list of strings
+>>> say_my_name("what happen there ->", ["Hello", "world"])
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+# Test case 10: both args are empty strings
+>>> say_my_name("", "")
+My name is  
