@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-    Module defines matrix_divided
+"""Module defines matrix_divided
         Definitions:
             matrix_divided(matrix, div)
 """
@@ -13,7 +12,7 @@ def matrix_divided(matrix, div):
             div - value to divided each element
 
         Returns:
-            List with all the divitions made
+            List of list with all the divitions made
 
         Raises:
             TypeError: When matrix is not a matrix of ints/floats

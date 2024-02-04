@@ -158,3 +158,29 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 Traceback (most recent call last):
     ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test case 25: matrix is a string
+>>> matrix = "Not_a_Matrix"
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test case 26: matrix with random value
+>>> matrix = [[-0, 2.865, "Not_a_number"], [(0, 1), [1, 2, 3], 3.14]]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test case 27: matrix with list of len 1
+>>> matrix = [[1], [2], [3], [4]]
+>>> matrix_divided(matrix, 3)
+[[0.33], [0.67], [1.0], [1.33]]
+
+# Test case 28: matrix with diferent length
+>>> matrix = [[1, 2], [3, 4], [5, 6, 7], [8], [9, 10]]
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
