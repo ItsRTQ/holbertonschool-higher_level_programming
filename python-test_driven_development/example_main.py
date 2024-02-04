@@ -1,4 +1,6 @@
 #!/usr/bin/python3
-matrix_divided = __import__('2-matrix_divided').matrix_divided
+print_square = __import__('4-print_square').print_square
 
-matrix_divided()
+print_square(float('nan'))
+
+print("")
