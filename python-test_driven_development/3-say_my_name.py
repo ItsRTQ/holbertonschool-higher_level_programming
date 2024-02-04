@@ -9,8 +9,8 @@ Module constains the definition of say_my_name()
 def say_my_name(first_name, last_name=""):
     """say_my_name prints My name is <first name> <last name>
         Args:
-            first_name - name to print
-            last_name - last name of name to print
+            first_name (str): name to print
+            last_name (str, optional): last name of name to print
         Raises:
             TypeError: if any first_name/last_name aren't str
     """
