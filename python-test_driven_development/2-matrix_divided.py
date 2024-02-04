@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module defines matrix_divided
+"""
+Module defines matrix_divided
         Definitions:
             matrix_divided(matrix, div)
 """
