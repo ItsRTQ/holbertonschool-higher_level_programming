@@ -126,3 +126,35 @@ And here.
 ?
 <BLANKLINE>
 <BLANKLINE>
+
+# Test case 15: text with None appended at the start of the text
+>>> text_indentation("Hello" + None)
+Traceback (most recent call last):
+    ...
+TypeError: can only concatenate str (not "NoneType") to str
+
+# Test case 16: spaces after every special characters
+>>> text_indentation("Hello:   Holberton?    we good.    what happen above")
+Hello:
+<BLANKLINE>
+Holberton?
+<BLANKLINE>
+we good.
+<BLANKLINE>
+what happen above
+
+# Test case 17: spaces on every special character before and after
+>>> text_indentation("Hello    :     Holberton    ?   we good   .    what happen above")
+Hello    :
+<BLANKLINE>
+Holberton    ?
+<BLANKLINE>
+we good   .
+<BLANKLINE>
+what happen above
+
+# Test case 18: text with new lines
+>>> text_indentation("William\n\n")
+William
+<BLANKLINE>
+<BLANKLINE>
