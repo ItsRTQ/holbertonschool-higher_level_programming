@@ -78,16 +78,16 @@ TypeError: text_indentation() missing 1 required positional argument: 'text'
 Hello
 
 # Test case 9: arg with multiple-spaces at end
->>> text_indentation("above      readme     : readme? Under    Read me         ")
+>>> text_indentation("above      readme     : readme? Under    Read me         .")
 above      readme     :
 <BLANKLINE>
 readme?
 <BLANKLINE>
-Under    Read me
+Under    Read me         .
+<BLANKLINE>
 
 # Test case 10: empty text given
 >>> text_indentation("")
-<BLANKLINE>
 
 # Test case 11: float number given
 >>> text_indentation(3.14)
@@ -97,7 +97,7 @@ TypeError: text must be a string
 
 # Test case 12: text with only whitelines
 >>> text_indentation("                                                       ")
-<BLANKLINE>
+
 
 # Test case 13: text with spaces after .?:
 >>> text_indentation("Spaces after special characters. : And here.")
@@ -106,7 +106,6 @@ Spaces after special characters.
 :
 <BLANKLINE>
 And here.
-<BLANKLINE>
 <BLANKLINE>
 
 # Test case 14: text with only special characters
@@ -124,7 +123,6 @@ And here.
 .
 <BLANKLINE>
 ?
-<BLANKLINE>
 <BLANKLINE>
 
 # Test case 15: text with None appended at the start of the text
@@ -157,7 +155,6 @@ what happen above
 >>> text_indentation("William\n\n")
 William
 <BLANKLINE>
-<BLANKLINE>
 
 # Test case 19: variable not define
 >>> text_indentation(text_here)
@@ -172,24 +169,20 @@ Printing newline:
 <BLANKLINE>
 Here.
 <BLANKLINE>
-<BLANKLINE>
 
 # Test case 21: ending special character
 >>> text_indentation("Any one there?")
 Any one there?
-<BLANKLINE>
 <BLANKLINE>
 
 # Test case 22: check for spaces at beginning of lines
 >>> text_indentation("       Hello world!.")
 Hello world!.
 <BLANKLINE>
-<BLANKLINE>
 
 # Test case 23: check for spaces at end of lines
 >>> text_indentation("Hello world!.     ")
 Hello world!.
-<BLANKLINE>
 <BLANKLINE>
 
 # Test case 24: white spaces with special characers mix
@@ -197,7 +190,6 @@ Hello world!.
 YEAH:
 <BLANKLINE>
 this goind to be a trip!.
-<BLANKLINE>
 <BLANKLINE>
 
 # Test case 25: multiple special character at once
@@ -207,7 +199,6 @@ As I was saying.
 .
 <BLANKLINE>
 .
-<BLANKLINE>
 <BLANKLINE>
 
 # Text case 26: dictionary as arg

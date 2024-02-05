@@ -14,15 +14,22 @@ def text_indentation(text):
             TypeError: when text is not a str
     """
 
-    skip = False
-    result = ""
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    for i, char in enumerate(text):
-        skip = False
-        result += char
-        if char in ["?", ".", ":"]:
-            result += "\n\n"
 
-    for sentence in result.split('\n'):
-        print(sentence.strip())
+    size = 0
+    special_char = [".", "?", ":"]
+    while size < len(text) and text[size] == ' ':
+        size += 1
+
+    while size < len(text):
+        print(text[size], end="")
+        if text[size] == "\n" or text[size] in special_char:
+            if text[size] in special_char:
+                print("\n")
+            size += 1
+            while size < len(text) and text[size] == ' ':
+                size += 1
+            continue
+        size += 1
+
