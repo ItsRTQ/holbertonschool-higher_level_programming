@@ -32,4 +32,3 @@ def text_indentation(text):
                 size += 1
             continue
         size += 1
-
