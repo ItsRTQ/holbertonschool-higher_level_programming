@@ -158,3 +158,60 @@ what happen above
 William
 <BLANKLINE>
 <BLANKLINE>
+
+# Test case 19: variable not define
+>>> text_indentation(text_here)
+Traceback (most recent call last):
+    ...
+NameError: name 'text_here' is not defined
+
+# Test case 20: text with newlines in it
+>>> text_indentation("Printing newline:\nHere.")
+Printing newline:
+<BLANKLINE>
+<BLANKLINE>
+Here.
+<BLANKLINE>
+<BLANKLINE>
+
+# Test case 21: ending special character
+>>> text_indentation("Any one there?")
+Any one there?
+<BLANKLINE>
+<BLANKLINE>
+
+# Test case 22: check for spaces at beginning of lines
+>>> text_indentation("       Hello world!.")
+Hello world!.
+<BLANKLINE>
+<BLANKLINE>
+
+# Test case 23: check for spaces at end of lines
+>>> text_indentation("Hello world!.     ")
+Hello world!.
+<BLANKLINE>
+<BLANKLINE>
+
+# Test case 24: white spaces with special characers mix
+>>> text_indentation("     YEAH:   this goind to be a trip!.    ")
+YEAH:
+<BLANKLINE>
+this goind to be a trip!.
+<BLANKLINE>
+<BLANKLINE>
+
+# Test case 25: multiple special character at once
+>>> text_indentation("As I was saying...")
+As I was saying.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+<BLANKLINE>
+
+# Text case 26: dictionary as arg
+>>> text_indentation({"Name": "William", "Last_name": "Herrera"})
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
