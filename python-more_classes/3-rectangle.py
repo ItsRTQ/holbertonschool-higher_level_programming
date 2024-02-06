@@ -98,3 +98,15 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             peri = 0
         return peri
+
+    def __str__(self):
+        """prints the rectangle when object is printed
+            Return: the rectangle printed
+        """
+
+        rect_printed = ""
+        for size in range(self.__height):
+            for length in range(self.__width):
+                rect_printed += "#"
+            rect_printed += "\n"
+        return rect_printed.rstrip("\n")
