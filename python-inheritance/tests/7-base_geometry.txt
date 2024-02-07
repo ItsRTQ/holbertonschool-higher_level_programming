@@ -1,0 +1,69 @@
+#base_geometry.txt
+
+#Imported class for testing
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# Test case 1: normal usaga
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("width", 89)
+
+
+# Test case 2: value not a strings
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+
+# Test case 3: value is 0
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 0
+
+# Test case 4: value is negative
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", -4)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 0
+
+# Test case 5: usage of method area
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+# Test case 6: usage of integer_validator() with no args
+>>> bg = BaseGeometry()
+>>> bg.integer_validator()
+Traceback (most recent call last):
+    ...
+TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+# Test case 7: usage of integer_validator() with only 1 args
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("Age")
+Traceback (most recent call last):
+    ...
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
+# Test case 8: passing None as both arguments
+>>> bg = BaseGeometry()
+>>> bg.integer_validator(None, None)
+Traceback (most recent call last):
+    ...
+TypeError: None must be an integer
+
+# Test case 9: passing None as 2 argument
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("size", None)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+# Test case 10: passing None as first argument
+>>> bg = BaseGeometry()
+>>> bg.integer_validator(None, 15)

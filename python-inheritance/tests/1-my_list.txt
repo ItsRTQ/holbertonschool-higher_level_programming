@@ -1,0 +1,102 @@
+#my_list.txt
+
+#Import of the class to be tested
+>>> MyList = __import__('1-my_list').MyList
+
+# Test case 1: Using it normally
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> my_list
+>>> my_list.print_sorted()
+>>> my_list
+[1, 4, 2, 3, 5]
+[1, 2, 3, 4, 5]
+[1, 4, 2, 3, 5]
+
+# Test case 2: usage with only one element
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+[1]
+
+# Test case 3: usage with no elements
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
+
+# Test case 4: usage with variaty of types
+>>> my_list = MyList()
+>>> my_list.append("one")
+>>> my_list.append(2.0)
+>>> my_list.append(3)
+>>> my_list.append(True)
+>>> my_list.append([1, 2])
+>>> my_list.append((3, 4))
+>>> my_list.append({"Name" : "William"})
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+    ...
+TypeError: '<' not supported between instances of 'float' and 'str'
+
+# Test case 5: usage with only strings
+>>> my_list = MyList()
+>>> my_list.append("apple")
+>>> my_list.append("coconut")
+>>> my_list.append("banana")
+>>> my_list.append("blue berry")
+>>> my_list.append("pineapple")
+>>> my_list.print_sorted()
+['apple', 'banana', 'blue berry', 'coconut', 'pineapple']
+
+# Test case 6: usage with only None elements
+>>> my_list = MyList()
+>>> my_list.append(None)
+>>> my_list.append(None)
+>>> my_list.append(None)
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+    ...
+TypeError: '<' not supported between instances of 'NoneType' and 'NoneType'
+
+# Test case 7: using other list methods with MyList class
+>>> my_list = MyList()
+>>> my_list.append(3)
+>>> my_list.append(2)
+>>> my_list.append(1)
+>>> my_list.pop()
+>>> my_list.insert(1, 4)
+>>> my_list.remove(2)
+>>> my_list.print_sorted()
+[3, 4]
+
+# Test case 8: with negative numbers
+>>> my_list = MyList()
+>>> my_list.append(-3)
+>>> my_list.append(2)
+>>> my_list.append(-1)
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+[-3, -1, 1, 2]
+
+# Test case 9: float numbers
+>>> my_list = MyList()
+>>> my_list.append(-3.14)
+>>> my_list.append(2.3)
+>>> my_list.append(-1.1)
+>>> my_list.append(1.0)
+>>> my_list.print_sorted()
+[-3.14, -1.1, 1.0, 2.3]
+
+# Test case 10: My_list not been created as a MyList obj
+>>> my_list = []
+>>> my_list.append(3)
+>>> my_list.append(2)
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+    ...
+AttributeError: 'list' object has no attribute 'print_sorted'
