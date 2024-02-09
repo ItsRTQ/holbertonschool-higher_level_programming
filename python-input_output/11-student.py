@@ -27,6 +27,6 @@ class Student:
     def reload_from_json(self, json):
         """This function reloads Student instance"""
 
-        self.first_name = json.get("first_name", "Name not found")
-        self.last_name = json.get("last_name", "Last name not found")
-        self.age = json.get("age", "Age not found")
+        self.first_name = json.get("first_name", "J")
+        self.last_name = json.get("last_name", "S")
+        self.age = json.get("age", 1)
