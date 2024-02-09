@@ -43,20 +43,48 @@ Traceback (most recent call last):
     ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-# Test case 8: passing None as both arguments
+# Test case 7: passing None as both arguments
 >>> bg = BaseGeometry()
 >>> bg.integer_validator(None, None)
 Traceback (most recent call last):
     ...
 TypeError: None must be an integer
 
-# Test case 9: passing None as 2 argument
+# Test case 8: passing None as 2 argument
 >>> bg = BaseGeometry()
 >>> bg.integer_validator("size", None)
 Traceback (most recent call last):
     ...
 TypeError: size must be an integer
 
-# Test case 10: passing None as first argument
+# Test case 9: passing None as first argument
 >>> bg = BaseGeometry()
 >>> bg.integer_validator(None, 15)
+
+# Test case 10: usage of tuple
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", (1,))
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+# Test case 11: usage of list
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", [15, 12])
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+# Test case 12: usage of boolean
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", False)
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+# Test case 13: usage of dictionay
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("age", {15: "bob"})
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
