@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-write_file = __import__('1-write_file').write_file
+MyClass = __import__('8-my_class').MyClass
+class_to_json = __import__('8-class_to_json').class_to_json
 
-nb_characters = write_file("my_first_file.txt", "This School is so cool!\n")
-print(nb_characters)
+m = MyClass("John")
+m.win()
+print(type(m))
+print(m)
+
+mj = class_to_json(m)
+print(type(mj))
+print(mj)
