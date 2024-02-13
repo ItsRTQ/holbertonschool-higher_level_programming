@@ -36,6 +36,9 @@ class Rectangle(Base):
             width setter:
                 Arg:
                     value - value to set to instance
+                Raises:
+                    ValueError: if width is <= 0
+                    TypeError: if width is not a int
         """
 
         return self.__width
@@ -57,6 +60,9 @@ class Rectangle(Base):
             height setter:
                 Arg:
                     value - value to set to instance
+                Raises:
+                    ValueError: if height is <= 0
+                    TypeError: if height is not a int
         """
 
         return self.__height
@@ -78,6 +84,9 @@ class Rectangle(Base):
             x setter:
                 Arg:
                     value - value to set to instance
+                Raises:
+                    ValueError: if x is < 0
+                    TypeError: if x is not a int
         """
 
         return self.__x
@@ -99,6 +108,9 @@ class Rectangle(Base):
             y setter:
                 Arg:
                     value - value to set to instance
+                Raises:
+                    ValueError: if y is < 0
+                    TypeError: if y is not a int
         """
 
         return self.__y
@@ -124,3 +136,12 @@ class Rectangle(Base):
             for j in range(self.__width):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """This method is call when you print a object instance"""
+
+        msg = ""
+        msg += f"[Rectangle] ({self.id})"
+        msg += f" {self.__x}/{self.__y}"
+        msg += f" - {self.__width}/{self.__height}"
+        return msg
