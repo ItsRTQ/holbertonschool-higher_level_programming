@@ -150,6 +150,8 @@ class Rectangle(Base):
         return msg
 
     def update(self, *args):
+        """This function updates instance attributes in order based on args"""
+
         for index, arg in enumerate(args, start=1):
             match index:
                 case 1:
