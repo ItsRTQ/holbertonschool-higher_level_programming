@@ -149,17 +149,30 @@ class Rectangle(Base):
         msg += f" - {self.__width}/{self.__height}"
         return msg
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """This function updates instance attributes in order based on args"""
 
-        for index, arg in enumerate(args, start=1):
-            if index == 1:
-                super().__init__(int(arg))
-            elif index == 2:
-                self.__width = arg
-            elif index == 3:
-                self.__height = arg
-            elif index == 4:
-                self.__x = arg
-            elif index == 5:
-                self.__y = arg
+        if args:
+            for index, arg in enumerate(args, start=1):
+                if index == 1:
+                    super().__init__(int(arg))
+                elif index == 2:
+                    self.__width = arg
+                elif index == 3:
+                    self.__height = arg
+                elif index == 4:
+                    self.__x = arg
+                elif index == 5:
+                    self.__y = arg
+        else:
+            for key, value in kwargs.items():
+                if key == "id":
+                    super().__init__(value)
+                elif key == "width":
+                    self.__width = value
+                elif key == "height":
+                    self.__height = value
+                elif key == "x":
+                    self.__x = value
+                elif key == "y":
+                    self.__y = value
