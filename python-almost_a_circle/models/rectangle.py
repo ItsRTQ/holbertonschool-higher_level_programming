@@ -33,7 +33,9 @@ class Rectangle(Base):
         """This function is the getter for width
             Returns: instance width
 
-            width setter: is use to set/overwrite instance width
+            width setter:
+                Arg:
+                    value - value to set to instance
         """
 
         return self.__width
@@ -47,7 +49,9 @@ class Rectangle(Base):
         """This function is the getter for height
             Returns: instance height
 
-            width setter: is use to set/overwrite instance height
+            height setter:
+                Arg:
+                    value - value to set to instance
         """
 
         return self.__height
@@ -61,7 +65,9 @@ class Rectangle(Base):
         """This function is the getter for x
             Returns: instance x
 
-            width setter: is use to set/overwrite instance x
+            x setter:
+                Arg:
+                    value - value to set to instance
         """
 
         return self.__x
@@ -75,7 +81,9 @@ class Rectangle(Base):
         """This function is the getter for y
             Returns: instance y
 
-            width setter: is use to set/overwrite instance y
+            y setter:
+                Arg:
+                    value - value to set to instance
         """
 
         return self.__y
