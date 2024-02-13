@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module defines class object Rectangle"""
-from models.base import Base
+from base import Base
 
 
 class Rectangle(Base):
@@ -111,3 +111,6 @@ class Rectangle(Base):
             self.__y = value
         else:
             raise TypeError("y must be an integer")
+
+    def area(self):
+        return self.__height * self.__width
