@@ -148,3 +148,17 @@ class Rectangle(Base):
         msg += f" {self.__x}/{self.__y}"
         msg += f" - {self.__width}/{self.__height}"
         return msg
+
+    def update(self, *args):
+        for index, arg in enumerate(args, start=1):
+            match index:
+                case 1:
+                    super().__init__(int(arg))
+                case 2:
+                    self.__width = arg
+                case 3:
+                    self.__height = arg
+                case 4:
+                    self.__x = arg
+                case 5:
+                    self.__y = arg
