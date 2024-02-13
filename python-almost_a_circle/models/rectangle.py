@@ -153,14 +153,13 @@ class Rectangle(Base):
         """This function updates instance attributes in order based on args"""
 
         for index, arg in enumerate(args, start=1):
-            match index:
-                case 1:
-                    super().__init__(int(arg))
-                case 2:
-                    self.__width = arg
-                case 3:
-                    self.__height = arg
-                case 4:
-                    self.__x = arg
-                case 5:
-                    self.__y = arg
+            if index == 1:
+                super().__init__(int(arg))
+            elif index == 2:
+                self.__width = arg
+            elif index == 3:
+                self.__height = arg
+            elif index == 4:
+                self.__x = arg
+            elif index == 5:
+                self.__y = arg
