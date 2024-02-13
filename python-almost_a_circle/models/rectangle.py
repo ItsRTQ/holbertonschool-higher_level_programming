@@ -4,9 +4,24 @@ from base import Base
 
 
 class Rectangle(Base):
-    """This object represents the geometrical shape of a rectangle"""
+    """This object represents the geometrical shape of a rectangle
+        Definitions:
+            width(): getter/setter
+            height(): getter/setter
+            x(): getter/setter
+            y(): getter/setter
+    """
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        """This happens as soon as a rectangle instancen is created
+            Args:
+                width: width of rectangle
+                height: height of rectangle
+                x: x position of rectangle
+                y: y position of rectangle
+                id: id of rectangle
+        """
+
         super().__init__(id)
         self.__width = width
         self.__height = height
