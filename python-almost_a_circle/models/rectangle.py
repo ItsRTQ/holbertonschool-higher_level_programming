@@ -113,4 +113,6 @@ class Rectangle(Base):
             raise TypeError("y must be an integer")
 
     def area(self):
+        """this calculates and returns the area of the rectangle"""
+
         return self.__height * self.__width
