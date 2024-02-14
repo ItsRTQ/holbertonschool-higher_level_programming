@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Moduele defines class Base"""
 import json
+import os
 
 
 class Base:
@@ -54,7 +55,10 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """This function creates a object using a dictionary"""
+        """This function creates a object using a dictionary
+            Returns:
+                a dummy class instance
+        """
 
         if cls.__name__ == "Rectangle":
             dummy = cls(5, 5)
@@ -63,3 +67,15 @@ class Base:
             dummy = cls(5)
             dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + ".json"
+        instances_list = []
+        if os.path.exists(filename):
+            with open(filename, 'r') as file:
+                json_text = file.read()
+                json_instances_list = cls.from_json_string(json_text)
+            for i in json_instances_list:
+                instances_list.append(cls.create(**i))
+        return instances_list
