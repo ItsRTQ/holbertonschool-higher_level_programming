@@ -17,6 +17,11 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """This method makes a dictionary into a json format string
+            Return:
+                string dictionary in json-format
+        """
+
         if list_dictionaries:
             return json.dumps(list_dictionaries)
         else:
