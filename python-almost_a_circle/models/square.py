@@ -40,3 +40,29 @@ class Square(Rectangle):
             self.height = value
         else:
             raise TypeError("width must be an integer")
+
+    def update(self, *args, **kwargs):
+        """This function updates instance attributes in order based on args"""
+
+        if args:
+            for index, arg in enumerate(args, start=1):
+                if index == 1:
+                    self.id = arg
+                elif index == 2:
+                    self.width = arg
+                    self.height = arg
+                elif index == 3:
+                    self.x = arg
+                elif index == 4:
+                    self.y = arg
+        else:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "size":
+                    self.width = value
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
