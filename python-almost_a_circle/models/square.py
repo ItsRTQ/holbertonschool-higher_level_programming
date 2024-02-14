@@ -19,3 +19,24 @@ class Square(Rectangle):
         msg += f" {self.x}/{self.y}"
         msg += f" - {self.width}"
         return msg
+
+    @property
+    def size(self):
+        """This the size getter, retrive the size of the square
+            Return: Size of square instancet
+
+            size setter:
+                Arg:
+                    Value - value to be set into size
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        if isinstance(value, int):
+            if value <= 0:
+                raise ValueError("width must be > 0")
+            self.width = value
+            self.height = value
+        else:
+            raise TypeError("width must be an integer")
