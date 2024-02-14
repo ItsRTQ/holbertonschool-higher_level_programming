@@ -36,6 +36,6 @@ class Base:
         if list_objs and isinstance(list_objs, list):
             for i in list_objs:
                 temp.append(i.to_dictionary())
-            temp = cls.to_json_string(temp)
+        temp = cls.to_json_string(temp)
         with open(filename, 'w') as file:
             file.write(temp)
