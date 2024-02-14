@@ -39,3 +39,15 @@ class Base:
         temp = cls.to_json_string(temp)
         with open(filename, 'w') as file:
             file.write(temp)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """This function loads a json string into a object
+            Returns:
+                A list
+        """
+
+        if json_string:
+            return json.loads(json_string)
+        else:
+            return []
