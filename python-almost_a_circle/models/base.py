@@ -60,11 +60,12 @@ class Base:
                 a dummy class instance
         """
 
+        dummy = None
         if cls.__name__ == "Rectangle":
-            dummy = cls(5, 5)
-            dummy.update(**dictionary)
+            dummy = cls(1, 1)
         elif cls.__name__ == "Square":
-            dummy = cls(5)
+            dummy = cls(1)
+        if dummy:
             dummy.update(**dictionary)
         return dummy
 

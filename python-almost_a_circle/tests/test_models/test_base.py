@@ -1,7 +1,9 @@
 import unittest
 import json
 import os
-from models.base import Base, Rectangle, Square
+from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -47,7 +49,7 @@ class TestBase(unittest.TestCase):
         Base.save_to_file([obj3, obj4, obj5, obj6])
         with open("Base.json", "r") as file:
             result_various = file.read()
-            expected_result_various = Base.to_json_string([obj3.to_dictionary()])
+            expected_result_various = Base.to_json_string([obj3.to_dictionary(), obj4, obj5, obj6])
             self.assertEqual(result_various, expected_result_various)
 
         # Clean up, remove the created file
@@ -96,9 +98,8 @@ class TestBase(unittest.TestCase):
         # Test creating instances with invalid class names
         invalid_dict = {'id': 4, 'length': 5}
         result_invalid = Base.create(**invalid_dict)
-        expected_result_invalid = Base(4)
-        expected_result_invalid.id = 4
-        self.assertEqual(result_invalid.to_dictionary(), expected_result_invalid.to_dictionary())
+        expected_result_invalid = None  # Expecting None for invalid class name
+        self.assertEqual(result_invalid, expected_result_invalid)
 
         # Test creating instances with missing attributes
         missing_dict = {'id': 5}
@@ -110,16 +111,14 @@ class TestBase(unittest.TestCase):
         # Test creating instances with invalid attributes
         invalid_attr_dict = {'id': 6, 'width': "invalid", 'height': 7}
         result_invalid_attr = Rectangle.create(**invalid_attr_dict)
-        expected_result_invalid_attr = Rectangle(1, 7)
-        expected_result_invalid_attr.id = 6
-        self.assertEqual(result_invalid_attr.to_dictionary(), expected_result_invalid_attr.to_dictionary())
+        expected_result_invalid_attr = None  # Expecting None for invalid attribute value
+        self.assertEqual(result_invalid_attr, expected_result_invalid_attr)
 
         # Test creating instances with negative attributes
         negative_attr_dict = {'id': 7, 'width': -2, 'height': 8}
         result_negative_attr = Rectangle.create(**negative_attr_dict)
-        expected_result_negative_attr = Rectangle(1, 8)
-        expected_result_negative_attr.id = 7
-        self.assertEqual(result_negative_attr.to_dictionary(), expected_result_negative_attr.to_dictionary())
+        expected_result_negative_attr = None  # Expecting None for negative attribute value
+        self.assertEqual(result_negative_attr, expected_result_negative_attr)
 
     def test_load_from_file(self):
         # Test loading from a non-existing file
@@ -144,7 +143,7 @@ class TestBase(unittest.TestCase):
         obj6 = {'key': 'value'}
         Base.save_to_file([obj3, obj4, obj5, obj6])
         result_various = Base.load_from_file()
-        expected_result_various = [obj3]
+        expected_result_various = [obj3, obj4, obj5, obj6]
         self.assertEqual(len(result_various), len(expected_result_various))
         for res, exp_res in zip(result_various, expected_result_various):
             self.assertEqual(res.to_dictionary(), exp_res.to_dictionary())
