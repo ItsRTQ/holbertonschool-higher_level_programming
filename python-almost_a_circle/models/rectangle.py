@@ -155,7 +155,7 @@ class Rectangle(Base):
         if args:
             for index, arg in enumerate(args, start=1):
                 if index == 1:
-                    super().__init__(int(arg))
+                    super().__init__(arg)
                 elif index == 2:
                     if isinstance(arg, int):
                         if arg <= 0:

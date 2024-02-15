@@ -1,6 +1,7 @@
 import unittest
 import json
 import os
+import tempfile
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -37,17 +38,52 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_save_to_file(self):
-        # You might need to mock the open method or use a temporary file for testing file operations.
-        # For simplicity, this example does not handle file I/O.
-        instances_list = [Rectangle(1, 2), Rectangle(2, 1)]
-        Rectangle.save_to_file(instances_list)
-        # Add assertions related to file I/O if necessary.
+        # Use a temporary file for testing file I/O
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            temp_filename = temp_file.name
+
+            # Create instances list with specific ids
+            instances_list = [Rectangle(1, 2, id=7), Rectangle(2, 1, id=11)]
+
+            # Save instances to the temporary file
+            Rectangle.save_to_file(instances_list)
+
+            # Load instances from the temporary file
+            loaded_instances = Rectangle.load_from_file()
+
+            # Check if the loaded instances have the same attributes as the expected instances
+            expected_instances = [Rectangle(1, 2, id=7), Rectangle(2, 1, id=11)]
+            for loaded_instance, expected_instance in zip(loaded_instances, expected_instances):
+                self.assertEqual(vars(loaded_instance), vars(expected_instance))
 
     def test_load_from_file(self):
-        # Similar to save_to_file, you might need to mock open method or handle file I/O properly.
-        # For simplicity, this example does not handle file I/O.
-        instances_list = Base.load_from_file()
-        self.assertEqual(instances_list, [])
+        # Use a temporary file for testing file I/O
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            temp_filename = temp_file.name
+
+            # Write a JSON string to the temporary file
+            with open(temp_filename, 'w') as file:
+                file.write('[{"id": 7, "width": 1, "height": 2, "x": 0, "y": 0}, {"id": 11, "width": 2, "height": 1, "x": 0, "y": 0}]')
+
+            # Load instances from the temporary file
+            instances_list = Rectangle.load_from_file()
+
+            # Check if the loaded instances have the same attributes as the expected instances
+            expected_list = [Rectangle(1, 2, id=7), Rectangle(2, 1, id=11)]
+            for loaded_instance, expected_instance in zip(instances_list, expected_list):
+                self.assertEqual(vars(loaded_instance), vars(expected_instance))
+
+    # Additional test cases for None as arguments and empty method calls
+
+    def test_base_load_from_file_with_none(self):
+        with self.assertRaises(TypeError):
+            Base.load_from_file(None)
+
+    def test_base_save_to_file_with_empty_list(self):
+        Base.save_to_file([])
+        # Check if the file is created and not empty
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        self.assertNotEqual(os.path.getsize("Rectangle.json"), 0)
 
 if __name__ == '__main__':
     unittest.main()
