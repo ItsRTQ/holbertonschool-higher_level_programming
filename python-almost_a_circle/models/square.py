@@ -49,8 +49,13 @@ class Square(Rectangle):
                 if index == 1:
                     self.id = arg
                 elif index == 2:
-                    self.width = arg
-                    self.height = arg
+                    if isinstance(arg, int):
+                        if arg <= 0:
+                            raise ValueError("width must be > 0")
+                        self.width = arg
+                        self.height = arg
+                    else:
+                        raise TypeError("width must be an integer")
                 elif index == 3:
                     self.x = arg
                 elif index == 4:
@@ -60,8 +65,13 @@ class Square(Rectangle):
                 if key == "id":
                     self.id = value
                 elif key == "size":
-                    self.width = value
-                    self.height = value
+                    if isinstance(value, int):
+                        if value <= 0:
+                            raise ValueError("width must be > 0")
+                        self.width = value
+                        self.height = value
+                    else:
+                        raise TypeError("width must be an integer")
                 elif key == "x":
                     self.x = value
                 elif key == "y":

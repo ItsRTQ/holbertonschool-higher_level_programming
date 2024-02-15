@@ -157,9 +157,19 @@ class Rectangle(Base):
                 if index == 1:
                     super().__init__(int(arg))
                 elif index == 2:
-                    self.__width = arg
+                    if isinstance(arg, int):
+                        if arg <= 0:
+                            raise ValueError("width must be > 0")
+                        self.__width = arg
+                    else:
+                        raise TypeError("width must be an integer")
                 elif index == 3:
-                    self.__height = arg
+                    if isinstance(arg, int):
+                        if arg <= 0:
+                            raise ValueError("height must be > 0")
+                        self.__height = arg
+                    else:
+                        raise TypeError("height must be an integer")
                 elif index == 4:
                     self.__x = arg
                 elif index == 5:
@@ -169,9 +179,19 @@ class Rectangle(Base):
                 if key == "id":
                     super().__init__(value)
                 elif key == "width":
-                    self.__width = value
+                    if isinstance(value, int):
+                        if value <= 0:
+                            raise ValueError("width must be > 0")
+                        self.width = value
+                    else:
+                        raise TypeError("width must be an integer")
                 elif key == "height":
-                    self.__height = value
+                    if isinstance(value, int):
+                        if value <= 0:
+                            raise ValueError("height must be > 0")
+                        self.height = value
+                    else:
+                        raise TypeError("height must be an integer")
                 elif key == "x":
                     self.__x = value
                 elif key == "y":

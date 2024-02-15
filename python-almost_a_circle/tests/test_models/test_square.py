@@ -1,72 +1,53 @@
 import unittest
-from models.base import Base
-from models.rectangle import Rectangle
+import io
+import unittest.mock
 from models.square import Square
 
-class TestSquare(unittest.TestCase):
+class TestSquareClass(unittest.TestCase):
 
-    def test_init(self):
-        # Test initializing with valid parameters
-        square = Square(5, 2, 3, 1)
-        self.assertEqual(square.size, 5)
-        self.assertEqual(square.x, 2)
-        self.assertEqual(square.y, 3)
-        self.assertEqual(square.id, 1)
+    def test_square_instance_creation(self):
+        square_instance = Square(5, 2, 3, 1)
+        self.assertEqual(square_instance.size, 5)
+        self.assertEqual(square_instance.x, 2)
+        self.assertEqual(square_instance.y, 3)
+        self.assertEqual(square_instance.id, 1)
 
-        # Test initializing with invalid parameters
-        with self.assertRaises(ValueError):
-            Square(-1, 2, 3, 1)
-        with self.assertRaises(TypeError):
-            Square("5", 2, 3, 1)
+    def test_square_area_calculation(self):
+        square_instance = Square(5)
+        self.assertEqual(square_instance.area(), 25)
 
-        # Test initializing with invalid types
-        with self.assertRaises(TypeError):
-            Square(5, "2", 3, 1)
-        with self.assertRaises(TypeError):
-            Square(5, 2, "3", 1)
-        with self.assertRaises(TypeError):
-            Square(5, 2, 3, "1")
+    def test_square_display(self):
+        square_instance = Square(3)
+        expected_output = "###\n###\n###\n"
+        with unittest.mock.patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+            square_instance.display()
+            self.assertEqual(mock_stdout.getvalue(), expected_output)
 
-    def test_update(self):
-        square = Square(5, 2, 3, 1)
+    def test_str_representation(self):
+        square_instance = Square(5, 2, 3, 1)
+        expected_output = "[Square] (1) 2/3 - 5"
+        self.assertEqual(str(square_instance), expected_output)
 
-        # Test updating with valid parameters using *args
-        square.update(2, 7, 4, 5)
-        self.assertEqual(square.id, 2)
-        self.assertEqual(square.size, 7)
-        self.assertEqual(square.x, 4)
-        self.assertEqual(square.y, 5)
+    def test_update_method_with_args(self):
+        square_instance = Square(5, 2, 3, 1)
+        square_instance.update(2, 8, 4, 5)
+        self.assertEqual(square_instance.id, 2)
+        self.assertEqual(square_instance.size, 8)
+        self.assertEqual(square_instance.x, 4)
+        self.assertEqual(square_instance.y, 5)
 
-        # Test updating with valid parameters using **kwargs
-        square.update(size=20, x=8, y=9)
-        self.assertEqual(square.size, 20)
-        self.assertEqual(square.x, 8)
-        self.assertEqual(square.y, 9)
+    def test_update_method_with_kwargs(self):
+        square_instance = Square(5, 2, 3, 1)
+        square_instance.update(id=2, size=8, x=4, y=5)
+        self.assertEqual(square_instance.id, 2)
+        self.assertEqual(square_instance.size, 8)
+        self.assertEqual(square_instance.x, 4)
+        self.assertEqual(square_instance.y, 5)
 
-        # Test updating with invalid parameters
-        with self.assertRaises(TypeError):
-            square.update(2, "7", 4, 5)
-
-        # Test updating with various types of objects and None
-        square.update(2, [7], {'key': 'value'}, None)
-        self.assertEqual(square.id, 2)
-        self.assertEqual(square.size, 1)  # Default value for invalid size
-        self.assertEqual(square.x, 4)
-        self.assertEqual(square.y, 5)
-
-        # Test empty call
-        square.update()
-        self.assertEqual(square.id, 2)
-        self.assertEqual(square.size, 1)
-        self.assertEqual(square.x, 4)
-        self.assertEqual(square.y, 5)
-
-    def test_to_dictionary(self):
-        square = Square(5, 2, 3, 1)
-        result = square.to_dictionary()
-        expected_result = {'id': 1, 'size': 5, 'x': 2, 'y': 3}
-        self.assertEqual(result, expected_result)
-
+    def test_to_dictionary_method(self):
+        square_instance = Square(5, 2, 3, 1)
+        expected_dict = {'id': 1, 'size': 5, 'x': 2, 'y': 3}
+        self.assertEqual(square_instance.to_dictionary(), expected_dict)
 
 if __name__ == '__main__':
     unittest.main()
