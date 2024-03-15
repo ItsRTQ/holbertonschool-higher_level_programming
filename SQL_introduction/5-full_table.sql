@@ -1,5 +1,2 @@
 -- this sql script the full description
-USE hbtn_0c_0;
-SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, IS_NULLABLE
-FROM information_schema.columns
-WHERE TABLE_SCHEMA = 'hbtn_0c_0' AND TABLE_NAME = 'first_table';
+SHOW CREATE TABLE first_table;
