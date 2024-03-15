@@ -1,2 +1,2 @@
 -- this sql script the full description
-SHOW COLUMNS FROM first_table;
+SHOW * FROM first_table;
