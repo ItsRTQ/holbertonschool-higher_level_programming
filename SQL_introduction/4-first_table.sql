@@ -1,5 +1,6 @@
 -- this scripts creates a table
-CREATE DATABASE IF NOT EXISTS first_table(
+DROP TABLE IF EXISTS first_table;
+CREATE TABLE first_table(
     id INT,
     name VARCHAR(256)
 );
