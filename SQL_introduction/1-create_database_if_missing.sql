@@ -1,2 +1,2 @@
--- This code-line creates a database with set name if it doesnt exist
+-- This code-line creates a database with set name
 CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
