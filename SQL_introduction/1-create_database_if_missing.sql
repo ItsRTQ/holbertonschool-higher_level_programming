@@ -1,2 +1,2 @@
--- This code-line deletes a database with set name
-DROP DATABASE IF EXISTS hbtn_0c_0;
+-- This code-line creates a database with set name
+CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
