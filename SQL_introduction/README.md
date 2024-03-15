@@ -1,0 +1,1 @@
+This is the practice for mySQL by Holberton School
