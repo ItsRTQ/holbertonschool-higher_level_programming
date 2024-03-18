@@ -1,0 +1,1 @@
+Here yall find the practice for OBJECT-REALTIONAL-MAPPING on python by Holberton School
