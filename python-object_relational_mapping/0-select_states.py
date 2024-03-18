@@ -12,27 +12,23 @@ def list_states(username, password, database):
             database: targeted database
     """
     try:
-        db = MySQLdb.connect(host="localhost",
-                             port=3306, user=username,
-                             passwd=password, db=database)
+        db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=database
+        )
         cursor = db.cursor()
-    except MySQLdb.Error as e:
-        print("Error connecting to the MySQL server:", e)
-        sys.exit(1)
-
-    try:
         cursor.execute("SELECT * FROM states ORDER BY id ASC")
-        states = cursor.fetchall()
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
     except MySQLdb.Error as e:
-        print("Error fetching states:", e)
-        db.close()
-        sys.exit(1)
-
-    print("States:")
-    for state in states:
-        print(state)
-
-    db.close()
+        print("MySQL Error:", e)
+    finally:
+        if db:
+            db.close()
 
 
 if __name__ == "__main__":
