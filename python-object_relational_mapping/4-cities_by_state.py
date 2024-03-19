@@ -25,8 +25,10 @@ def cities_display(username, password, database):
         Session = sessionmaker(bind=engine)
         session = Session()
         cities = session.query(City).order_by(City.id).all()
+        states = {state.id: state.name for state in session.query(City)}
         for city in cities:
-            print("({}, '{}', '{}')".format(city.id, city.name, city.state))
+            state_name = states.get(city.state_id, 'Unknown')
+            print("({}, '{}', '{}')".format(city.id, city.name, state_name))
 
     except Exception as e:
         print("Error:", e)
