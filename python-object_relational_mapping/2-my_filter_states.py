@@ -20,28 +20,17 @@ class State(Base):
 def display(username, password, database, target):
     """This function will do the search to find the states"""
 
-    try:
-        mysql_conn = MySQLdb.connect(host="localhost",
-                                     port=3306,
-                                     user=username,
-                                     passwd=password,
-                                     db=database)
-        engine = create_engine(
-            f"mysql://{username}:{password}@localhost:3306/{database}")
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        query = "SELECT * FROM states WHERE name = '{}' LIMIT 1".format(target)
-        results = session.execute(query).fetchall()
-        for result in results:
-            print(result)
-
-    except Exception as e:
-        print("Error:", e)
-    finally:
-        if mysql_conn:
-            mysql_conn.close()
-        if session:
-            session.close()
+    mysql_conn = MySQLdb.connect(host="localhost",
+                                 port=3306,
+                                 user=username,
+                                 passwd=password,
+                                 db=database)
+    sql_co = mysql_conn.cursor()
+    sql_co.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'\
+                   ORDER BY states.id ASC".format(target))
+    rows = sql_co.fetchall()
+    for row in rows:
+        print(row)
 
 
 if __name__ == "__main__":
