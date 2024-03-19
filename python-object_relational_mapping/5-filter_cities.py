@@ -13,16 +13,14 @@ def display_cities(username, password, database, state_name):
                                      user=username,
                                      passwd=password,
                                      db=database)
-
         cursor = mysql_conn.cursor()
-        cursor.execute("SELECT GROUP_CONCAT(cities.name SEPARATOR ', ')\
-                        FROM cities\
+        cursor.execute("SELECT cities.name FROM cities \
                         INNER JOIN states ON cities.state_id = states.id \
                         WHERE states.name = %s\
                         ORDER BY cities.id ASC", (state_name,))
-        result = cursor.fetchone()[0]
-        print(result)
-
+        cities = cursor.fetchall()
+        cities_str = ', '.join(city[0] for city in cities)
+        print(cities_str)
     except MySQLdb.Error as e:
         print("MySQL Error:", e)
     finally:
