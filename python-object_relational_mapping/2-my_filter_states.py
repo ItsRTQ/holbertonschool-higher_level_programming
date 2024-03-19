@@ -30,10 +30,10 @@ def display(username, password, database, target):
             f"mysql://{username}:{password}@localhost:3306/{database}")
         Session = sessionmaker(bind=engine)
         session = Session()
-        query = "SELECT * FROM states WHERE name = '{}'".format(target)
-        states = session.execute(query)
-        for state in states:
-            print((state.id, state.name))
+        query = "SELECT * FROM states WHERE name = '{}' LIMIT 1".format(target)
+        result = session.execute(query).fetchone()
+        if result:
+            print((result.id, result.name))
 
     except Exception as e:
         print("Error:", e)
