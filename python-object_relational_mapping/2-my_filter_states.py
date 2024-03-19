@@ -4,6 +4,7 @@ import MySQLdb
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, Table, MetaData
 import sys
 
 
@@ -20,28 +21,17 @@ class State(Base):
 def display(username, password, database, target):
     """This function will do the search to find the states"""
 
-    try:
-        mysql_conn = MySQLdb.connect(host="localhost",
-                                     port=3306,
-                                     user=username,
-                                     passwd=password,
-                                     db=database)
-        engine = create_engine(
-            f"mysql://{username}:{password}@localhost:3306/{database}")
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        query = "SELECT * FROM states WHERE name = '{}' LIMIT 1".format(target)
-        result = session.execute(query).fetchone()
-        if result:
-            print((result.id, result.name))
-
-    except Exception as e:
-        print("Error:", e)
-    finally:
-        if mysql_conn:
-            mysql_conn.close()
-        if session:
-            session.close()
+    engine = create_engine(
+        f"mysql://{username}:{password}@localhost:3306/{database}")
+    connection = engine.connect()
+    metadata = MetaData()
+    states = Table('states', metadata, autoload=True, autoload_with=engine)
+    query = states.select().where(
+        states.columns.name == target).order_by(states.columns.id)
+    result = connection.execute(query)
+    for row in result:
+        print(row)
+    connection.close()
 
 
 if __name__ == "__main__":
