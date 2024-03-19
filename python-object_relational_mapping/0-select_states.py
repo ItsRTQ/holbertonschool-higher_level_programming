@@ -26,7 +26,6 @@ def list_states(username, password, database):
                                      user=username,
                                      passwd=password,
                                      db=database)
-        cursor = mysql_conn.cursor()
         engine = create_engine(
             f"mysql://{username}:{password}@localhost:3306/{database}")
         Session = sessionmaker(bind=engine)
