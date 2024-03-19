@@ -33,7 +33,7 @@ def list_states(username, password, database):
         session = Session()
         states = session.query(State).order_by(State.id).all()
         for state in states:
-            print(state.name)
+            print((state.id, state.name))
 
     except Exception as e:
         print("Error:", e)
