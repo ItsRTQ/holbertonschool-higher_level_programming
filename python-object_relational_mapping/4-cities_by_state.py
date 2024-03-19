@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This script will display all cities in acending order"""
 import sys
+import MySQLdb
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -20,21 +21,25 @@ class City(Base):
 def cities_display(username, password, database):
     """This function will list the cities in acending order"""
     try:
-        engine = create_engine(
-            f"mysql://{username}:{password}@localhost:3306/{database}")
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        cities = session.query(City).order_by(City.id).all()
-        states = {state.id: state.name for state in session.query(City)}
-        for city in cities:
-            state_name = states.get(city.state_id, 'Unknown')
-            print("({}, '{}', '{}')".format(city.id, city.name, state_name))
-
-    except Exception as e:
-        print("Error:", e)
+        mysql_conn = MySQLdb.connect(host="localhost",
+                                     port=3306,
+                                     user=username,
+                                     passwd=password,
+                                     db=database)
+        cursor = mysql_conn.cursor()
+        cursor.execute("SELECT cities.id, cities.name, states.name \
+                       FROM cities INNER JOIN states \
+                       ON cities.state_id = states.id ORDER BY cities.id ASC")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+    except MySQLdb.Error as e:
+        print("MySQL Error:", e)
     finally:
-        if session:
-            session.close()
+        if cursor:
+            cursor.close()
+        if mysql_conn:
+            mysql_conn.close()
 
 
 if __name__ == "__main__":
