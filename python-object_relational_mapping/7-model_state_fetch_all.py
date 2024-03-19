@@ -13,11 +13,9 @@ def list_states(username, password, database):
             f"mysql://{username}:{password}@localhost:3306/{database}")
         Session = sessionmaker(bind=engine)
         session = Session()
-
         states = session.query(State).order_by(State.id).all()
-
         for state in states:
-            print(state.id, state.name)
+            print(f"{state.id}: {state.name}")
 
     except Exception as e:
         print("Error:", e)
