@@ -7,7 +7,7 @@ from model_state import Base, State
 from model_city import City
 
 
-def fetch_cities_by_state(username, password, database):
+def fetch_cities(username, password, database):
     """This function prints all City objects from the database"""
     try:
         engine = create_engine(
@@ -30,4 +30,4 @@ if __name__ == "__main__":
     if len(sys.argv) != 4:
         sys.exit(1)
     username, password, database = sys.argv[1:]
-    fetch_cities_by_state(username, password, database)
+    fetch_cities(username, password, database)
