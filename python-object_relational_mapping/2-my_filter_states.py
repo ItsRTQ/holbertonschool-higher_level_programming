@@ -31,7 +31,7 @@ def display(username, password, database, target):
         Session = sessionmaker(bind=engine)
         session = Session()
         query = "SELECT * FROM states WHERE name = '{}' LIMIT 1".format(target)
-        result = session.execute(query).fetchone()
+        result = session.execute(query).fetchall()
         if result:
             print((result.id, result.name))
 
