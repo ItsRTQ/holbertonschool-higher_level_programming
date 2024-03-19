@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""This module print cities and state"""
+"""This module prints cities of a given state"""
 import sys
 import MySQLdb
 
 
-def list_cities(username, password, database, state_name):
-    """This call will representent each row of the table citie"""
+def display_cities(username, password, database, state_name):
+    """This function lists all cities of a given state"""
 
     try:
         mysql_conn = MySQLdb.connect(host="localhost",
@@ -15,13 +15,14 @@ def list_cities(username, password, database, state_name):
                                      db=database)
 
         cursor = mysql_conn.cursor()
-        cursor.execute("SELECT cities.id, cities.name FROM cities \
+        cursor.execute("SELECT GROUP_CONCAT(cities.name SEPARATOR ', ')\
+                        FROM cities\
                         INNER JOIN states ON cities.state_id = states.id \
-                        WHERE states.name = %s \
+                        WHERE states.name = %s\
                         ORDER BY cities.id ASC", (state_name,))
-        rows = cursor.fetchall()
-        for row in rows:
-            print(row)
+        result = cursor.fetchone()[0]
+        print(result)
+
     except MySQLdb.Error as e:
         print("MySQL Error:", e)
     finally:
@@ -35,4 +36,4 @@ if __name__ == "__main__":
     if len(sys.argv) != 5:
         sys.exit(1)
     username, password, database, state_name = sys.argv[1:]
-    list_cities(username, password, database, state_name)
+    display_cities(username, password, database, state_name)
