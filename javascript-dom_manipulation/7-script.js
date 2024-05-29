@@ -1,9 +1,13 @@
 const target = document.getElementById('list_movies');
 fetch('https://swapi-api.hbtn.io/api/films/?format=json')
-    .then(response => response.json)
+    .then(response => response.json())
     .then(apiData => {
-        const titleDict = apiData['results'];
+        const titleDict = apiData.results;
         for (let i = 0; i < titleDict.length; i++) {
-          //Se Crea el elemento con el nombre del titulo
+          let toAddElement = document.createTextNode(titleDict[i].title);
+          const titleToAdd = document.createElement('li');
+          titleToAdd.appendChild(toAddElement);
+          target.appendChild(titleToAdd);
         }
     })
+    .catch(error => console.log(error));
